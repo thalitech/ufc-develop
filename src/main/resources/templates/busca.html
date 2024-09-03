@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>Sistema UFC</title>
+<style>
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li
+ 
+a
+:hover
+:not
+ 
+(
+.active
+ 
+)
+{
+background-color
+:
+ 
+#111
+;
+
+
+}
+.active {
+	background-color: #4CAF50;
+}
+
+li {
+	border-right: 1px solid #bbb;
+}
+
+li:last-child {
+	border-right: none;
+}
+
+input[type=text] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 18px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+.container {
+	padding: 16px;
+}
+
+span.psw {
+	float: right;
+	padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+	span.psw {
+		display: block;
+		float: none;
+	}
+}
+</style>
+</head>
+<body>
+	<ul>
+		<li><a href="/menu">Home</a></li>
+		<li><a href="/cadastro">Cadastro de Lutadores</a></li>
+		<li><a href="/busca">Buscar Lutadores</a></li>
+		<li><a href="/descubra">Descobrir Categoria</a></li>
+		<li><a href="/estimarpeso">Estimar Peso por Categoria</a></li>
+		<li><a href="/agendarluta">Estimar Luta Aleatória</a></li>
+		<li style="float:right"><a class="active" href="/acesso">Sair</a></li>
+	</ul>
+
+	<h2 class="w3-center w3-text-black">Busque o seu Lutador</h2>
+	<form action="#"
+		class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin"
+		th:action="@{/procura}" th:object="${lutador}" method="post">
+
+		<div class="container">
+			<label for="name"> Nome: </label> <input type="text"
+				th:field="*{nome}" /> <label for="name"> Peso: </label> <input
+				type="text" th:field="*{peso}" /> <label for="category">
+				Categoria: </label> <input type="text" th:field="*{categoria}" /> <label
+				for="name">Cidade: </label> <input type="text" th:field="*{cidade}" />
+
+			<label for="name">Estado:</label> <input type="text"
+				th:field="*{estado}" />
+
+		</div>
+
+		<div class="w3-container">
+			<div class="w3-bar w3-center">
+				<button type="submit" class="w3-button w3-green"
+					style="width: 30.1%" value="Buscar">Enviar</button>
+				<button type="reset" class="w3-button w3-red" style="width: 30.1%"
+					value="Limpar">Limpar</button>
+			</div>
+	</form>
+	<br>
+
+	<div class="w3-card-4" style="width: 100%;">
+		<header class="w3-container w3-red">
+			<h1>Lutadores Cadastrados</h1>
+		</header>
+	</div>
+
+	<div class="w3-container w3-card-4" style="width: 100%;">
+		<table class="w3-table-all w3-card-4">
+			<thead>
+				<tr class="w3-light-grey">
+					<th>Nome</th>
+					<th>Peso</th>
+					<th>Categoria</th>
+					<th>Cidade</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="l,rowStat : ${lutadores}">
+					<td th:text="${l.nome}"></td>
+					<td th:text="${l.peso}"></td>
+					<td th:text="${l.categoria}"></td>
+					<td th:text="${l.cidade}"></td>
+					<td th:text="${l.estado}"></td>
+				</tr>
+			</tbody>
+		</table>
+</body>
+</html>

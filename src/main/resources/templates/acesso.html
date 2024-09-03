@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sistema UFC</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="images/favicon.ico" rel="icon" type="image/x-icon" /> 
+	
+<style>
+	
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+ 
+	</style>
+</head>
+<body>
+<body>
+	
+	<h2 class="w3-center w3-text-black">Acesso de Usuários</h2>
+	<form action="#" class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin" th:action="@{/acesso}" th:object="${login}"
+		method="post">
+		
+		<div class="container">
+		<label for="uname"> Usuário: </label> 
+		<input type="text" placeholder="Enter Username" name="uname" th:field="*{usuario}" required />
+
+		<label for="psw"><b>Senha: </b></label>
+		 <input type="password" placeholder="Enter Password" name="psw" th:field="*{senha}" required/>
+		
+		
+			<button type="submit" value="Entrar" id="entrar">Login</button>
+			<label>
+     			 <input type="checkbox" checked="checked" name="remember"> Lembrar-me
+    		</label>
+    	</div>
+    	
+    	<div class="container" style="background-color:#f1f1f1">
+    	<button type="reset" value="Limpar"  class="cancelbtn">Limpar</button>
+    	<span class="psw">Esqueci a <a href="#">senha?</a></span>
+  		</div>
+    	
+	</form>
+
+	
+</body>
+</html>
